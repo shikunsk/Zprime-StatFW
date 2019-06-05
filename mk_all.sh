@@ -3,7 +3,7 @@
 inputDir=/raid/raid7/lucien/Higgs/Zprime/ParaInput/EXO-18-001-Nominal/2019-06-05/
 outputDir=DataCard/EXO-18-001-Nominal/2019-06-05/
 
-python makeDataCard.py --inputDir=/raid/raid7/lucien/Higgs/Zprime/ParaInput/EXO-18-001-Nominal/2019-06-05/ --outputDir DataCard/EXO-18-001-Nominal/2019-06-05/ --verbose
+python makeDataCard.py --inputDir=${inputDir} --outputDir ${outputDir} --verbose
 
 for d in $(ls ${outputDir}); 
 do

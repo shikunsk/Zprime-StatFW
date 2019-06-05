@@ -127,7 +127,7 @@ for plot in plots:
         median.SetPoint( i, window_value,   calculate(outDict["central"][window_value]     , window_value, plot) )
     
     mg = ROOT.TMultiGraph()
-    mg.SetMaximum(1.)
+    mg.SetMaximum(1.E4)
     mg.SetMinimum(0.001 if setLogY else 0.)
     
     yellow.SetFillColor(ROOT.kOrange)

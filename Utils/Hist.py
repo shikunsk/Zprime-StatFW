@@ -1,4 +1,4 @@
-import ROOT
+import ROOT,math
 
 def getIntegral(hist):
     error = ROOT.Double(0.)
@@ -12,8 +12,8 @@ def getIntegral(hist):
     return integral,error
 
 def getCountAndError(hist,central,width,isSR=True):
-    lower_value = central-width
-    upper_value = central+width
+    lower_value = central*(1.-width)
+    upper_value = central*(1.+width)
 
     if isSR:
         error = ROOT.Double(0.)
