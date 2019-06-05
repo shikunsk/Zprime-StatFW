@@ -41,7 +41,7 @@ mass_points = [
         15,
         ] + range(20,80,10)
 signal_models = [ 
-        SignalModel("ZpToMuMu_MZp"+str(m),["zpToMuMu_M"+str(m),],m) for m in mass_points 
+        SignalModel("ZpToMuMu_M"+str(m),["zpToMuMu_M"+str(m),],m) for m in mass_points 
         ]
 
 data_names = [
@@ -56,7 +56,7 @@ bkg_names = [
 # ____________________________________________________________________________________________________________________________________________ ||
 # bin list
 binList = [
-        Bin("FourMu_SR",signalNames=["zpToMuMu",],sysFile=lnSystFilePathDict["TwoMu"],inputBinName="2mu_HiggsSR",width=option.muWidth),
+        Bin("FourMu_SR",signalNames=["zpToMuMu",],sysFile=lnSystFilePathDict["TwoMu"],inputBinName="",width=option.muWidth,inputBinNameFunc=lambda x: "mZ2_4mu" if x.central_value <= 40 else "mZ1_4mu"),
         ]
 
 # ____________________________________________________________________________________________________________________________________________ ||
@@ -73,13 +73,12 @@ for signal_model in signal_models:
     signal_model_name = signal_model.name
     if option.verbose: print "*"*100
     if option.verbose: print "Making data card for ",signal_model_name
-    #central_value = float(signal_model_name.replace("HZZd_M",""))
     central_value = signal_model.central_value
-    binListCopy = [b for b in copy.deepcopy(binList) if option.sideband or (not option.sideband and "SR" in b.name)]
+    binListCopy = [b for b in copy.deepcopy(binList) ]
     for ibin,bin in enumerate(binListCopy):
         if option.verbose: print "-"*20
         if option.verbose: print bin.name
-        histName = bin.inputBinName
+        histName = bin.inputBinName if not bin.inputBinNameFunc else bin.inputBinNameFunc(signal_model)
 
         # bkg
         for bkgName in bkg_names:
@@ -103,13 +102,14 @@ for signal_model in signal_models:
         
         # signal
         for each_signal_model_name in signal_model.signal_list:
-            if bin.name.endswith("_SR"): 
-                for key in bin.interFuncDict:
-                    if key in each_signal_model_name: break
-                count = bin.interFuncDict[key].Eval(central_value)
-            else:
-                count = 0.
-            bin.processList.append(Process(each_signal_model_name,count if count > 0. else 1e-12,0.))
+            reader.openFile(inputDir,each_signal_model_name,TFileName)
+            hist = reader.getObj(each_signal_model_name,histName)
+            count,error = copy.deepcopy(getCountAndError(hist,central_value,bin.width,isSR=isSRFunc(bin)))
+            bin.processList.append(Process(each_signal_model_name,count if count >= 0. else 1e-12,error)) 
+            # systematics
+            if count:
+                mcSyst = lnNSystematic("SigStat_"+bin.name,[ each_signal_model_name, ],lambda syst,procName,anaBin: float(1.+error/count))
+                bin.systList.append(mcSyst)
         
         for syst in commonLnSystematics:
             bin.systList.append(copy.deepcopy(syst))

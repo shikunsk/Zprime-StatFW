@@ -1,6 +1,5 @@
 import glob,os,argparse,subprocess
 from CombineAPI.CombineInterface import CombineAPI,CombineOption 
-from Parametric.InputParameters import parameterDict
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--inputDir",action="store")
