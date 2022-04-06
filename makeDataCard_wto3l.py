@@ -38,13 +38,19 @@ isSRFunc = lambda x: x.name.endswith("SR")
 # mass window
 mass_points = [
         15,
+        20,
+        30,
         45,
+        60,
         ] #+ range(20,80,10)
 signal_models = [ 
         #SignalModel("ZpTo3munu_ZpM"+str(m),["zpTo3munuMu_ZpM"+str(m),],m) for m in mass_points
         #SignalModel("ZmTo3munu_ZpM"+str(m),["zmTo3munuMu_ZpM"+str(m),],m) for m in mass_points
         SignalModel("WTo3munu_ZpM15",["WpTo3munu_ZpM15","WmTo3munu_ZpM15",],15),
+        SignalModel("WTo3munu_ZpM20",["WpTo3munu_ZpM20","WmTo3munu_ZpM20",],20),
+        SignalModel("WTo3munu_ZpM30",["WpTo3munu_ZpM30","WmTo3munu_ZpM30",],30),
         SignalModel("WTo3munu_ZpM45",["WpTo3munu_ZpM45","WmTo3munu_ZpM45",],45),
+        SignalModel("WTo3munu_ZpM60",["WpTo3munu_ZpM60","WmTo3munu_ZpM60",],60),
         #SignalModel("WpTo3munu_ZpM15",["WpTo3munu_ZpM15",],15),
         #SignalModel("WmTo3munu_ZpM15",["WmTo3munu_ZpM15",],15),
         ]
@@ -66,8 +72,8 @@ binList = [
         ]
 '''
 binList = [
-        Bin("NNP",signalNames=["WpTo3munu","WmTo3munu"],sysFile=lnSystFilePathDict["NNP"],inputBinName="NNP_SR_mass1",width=option.muWidth),
-        Bin("PPN",signalNames=["WpTo3munu","WmTo3munu"],sysFile=lnSystFilePathDict["PPN"],inputBinName="PPN_SR_mass1",width=option.muWidth),
+        Bin("NNP",signalNames=["WpTo3munu","WmTo3munu"],sysFile=lnSystFilePathDict["NNP"],inputBinName="NNP_mass2",width=option.muWidth),
+        Bin("PPN",signalNames=["WpTo3munu","WmTo3munu"],sysFile=lnSystFilePathDict["PPN"],inputBinName="PPN_mass2",width=option.muWidth),
         ]
 
 # ____________________________________________________________________________________________________________________________________________ ||
@@ -95,7 +101,7 @@ for signal_model in signal_models:
         for bkgName in bkg_names:
             reader.openFile(inputDir,bkgName,TFileName)
             hist = reader.getObj(bkgName,histName)
-            count,error = getCountAndError(hist,central_value,bin.width,isSR=isSRFunc(bin))
+            count,error = getCountAndError(hist,central_value,bin.width,isSR=True)
             process = Process(bkgName,count if count >= 0. else 1e-12,error)
             bin.processList.append(process)
 
@@ -104,7 +110,7 @@ for signal_model in signal_models:
         for sample in data_names:
             reader.openFile(inputDir,sample,TFileName)
             hist = reader.getObj(sample,histName)
-            count,error = getCountAndError(hist,central_value,bin.width,isSR=isSRFunc(bin))
+            count,error = getCountAndError(hist,central_value,bin.width,isSR=True)
             dataCount += count
         error = math.sqrt(dataCount)
         bin.data = Process("data_obs",int(dataCount),error)
@@ -115,7 +121,7 @@ for signal_model in signal_models:
         for each_signal_model_name in signal_model.signal_list:
             reader.openFile(inputDir,each_signal_model_name,TFileName)
             hist = reader.getObj(each_signal_model_name,histName)
-            count,error = copy.deepcopy(getCountAndError(hist,central_value,bin.width,isSR=isSRFunc(bin)))
+            count,error = copy.deepcopy(getCountAndError(hist,central_value,bin.width,isSR=True))
             bin.processList.append(Process(each_signal_model_name,count if count >= 0. else 1e-12,error)) 
             # systematics
             '''

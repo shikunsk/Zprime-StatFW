@@ -1,0 +1,27 @@
+Combination of ZpToMuMu_M48.2_2018=/home/kshi/SUSY/CMSSW_8_0_25/src/Zprime-StatFW/DataCard_Zto4l/RunII/test/Zprime/ZpToMuMu_M48.2/ZpToMuMu_M48.2_2018.txt  ZpToMuMu_M48.2_2017=/home/kshi/SUSY/CMSSW_8_0_25/src/Zprime-StatFW/DataCard_Zto4l/RunII/test/Zprime/ZpToMuMu_M48.2/ZpToMuMu_M48.2_2017.txt  ZpToMuMu_M48.2_2016=/home/kshi/SUSY/CMSSW_8_0_25/src/Zprime-StatFW/DataCard_Zto4l/RunII/test/Zprime/ZpToMuMu_M48.2/ZpToMuMu_M48.2_2016.txt
+imax 3 number of bins
+jmax 3 number of processes minus 1
+kmax 10 number of nuisance parameters
+----------------------------------------------------------------------------------------------------------------------------------
+shapes *                    ZpToMuMu_M48.2_2016  FAKE
+shapes *                    ZpToMuMu_M48.2_2017  FAKE
+shapes *                    ZpToMuMu_M48.2_2018  FAKE
+----------------------------------------------------------------------------------------------------------------------------------
+bin          ZpToMuMu_M48.2_2018  ZpToMuMu_M48.2_2017  ZpToMuMu_M48.2_2016
+observation  12                   11                   4                  
+----------------------------------------------------------------------------------------------------------------------------------
+bin                              ZpToMuMu_M48.2_2018  ZpToMuMu_M48.2_2018  ZpToMuMu_M48.2_2018  ZpToMuMu_M48.2_2018  ZpToMuMu_M48.2_2017  ZpToMuMu_M48.2_2017  ZpToMuMu_M48.2_2017  ZpToMuMu_M48.2_2017  ZpToMuMu_M48.2_2016  ZpToMuMu_M48.2_2016  ZpToMuMu_M48.2_2016  ZpToMuMu_M48.2_2016
+process                          zpToMuMu_M48.2       ggZZ                 qqZZ                 Higgs                zpToMuMu_M48.2       ggZZ                 qqZZ                 Higgs                zpToMuMu_M48.2       ggZZ                 qqZZ                 Higgs              
+process                          0                    1                    2                    3                    0                    1                    2                    3                    0                    1                    2                    3                  
+rate                             54.0359093636        0.2743264112         12.1517207404        0.0341872023         39.8864547855        0.2015259556         8.1174908388         0.0187068066         34.5875296329        0.1555689469         6.828145011          0.0145299105       
+----------------------------------------------------------------------------------------------------------------------------------
+CMS_eff_e               lnN      -                    1.04                 1.04                 1.04                 -                    1.04                 1.04                 1.04                 -                    1.04                 1.04                 1.04               
+CMS_eff_m               lnN      -                    1.025                1.025                1.025                -                    1.025                1.025                1.025                -                    1.025                1.025                1.025              
+CMS_res_e               lnN      -                    1.02                 1.02                 1.02                 -                    1.02                 1.02                 1.02                 -                    1.02                 1.02                 1.02               
+CMS_res_m               lnN      -                    1.02                 1.02                 1.02                 -                    1.02                 1.02                 1.02                 -                    1.02                 1.02                 1.02               
+CMS_scale_e             lnN      -                    1.005                1.005                1.005                -                    1.005                1.005                1.005                -                    1.005                1.005                1.005              
+CMS_scale_m             lnN      -                    1.005                1.005                1.005                -                    1.005                1.005                1.005                -                    1.005                1.005                1.005              
+EwkCorr_qqZZ            lnN      -                    -                    1.001                -                    -                    -                    1.001                -                    -                    -                    1.001                -                  
+PDFScale_qqZZ           lnN      -                    -                    1.034                -                    -                    -                    1.034                -                    -                    -                    1.034                -                  
+QCDScale_qqZZ           lnN      -                    -                    1.042                -                    -                    -                    1.042                -                    -                    -                    1.042                -                  
+lumi                    lnN      -                    1.025                1.025                1.025                -                    1.025                1.025                1.025                -                    1.025                1.025                1.025              

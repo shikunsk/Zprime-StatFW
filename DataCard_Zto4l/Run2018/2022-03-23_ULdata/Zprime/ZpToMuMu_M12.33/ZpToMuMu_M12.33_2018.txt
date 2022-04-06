@@ -1,0 +1,32 @@
+
+*     number of categories
+*     number of samples minus one
+*     number of nuisance parameters
+-----------------------------------------------------------------------
+shapes * * FAKE
+---------------------------------------------------------------------------------
+
+bin	FourMu_SR	
+observation	12	
+---------------------------------------------------------------------------------
+bin	FourMu_SR	FourMu_SR	FourMu_SR	
+
+
+process	ggZZ	qqZZ	zpToMuMu_M12.33	
+process	1	2	-2	
+rate		0.0386710524798		6.38364909378		1540.58187107		
+---------------------------------------------------------------------------------
+
+lumi	lnN	1.025	1.025	-	
+BkgUnc	lnN	-	-	-	
+QCDScale_qqZZ	lnN	-	1.042	-	
+PDFScale_qqZZ	lnN	-	1.034	-	
+EwkCorr_qqZZ	lnN	-	1.001	-	
+Interference	lnN	-	-	-	
+CMS_eff_m	lnN	1.025	1.025	-	
+CMS_scale_m	lnN	1.005	1.005	-	
+CMS_res_m	lnN	1.02	1.02	-	
+CMS_eff_e	lnN	1.04	1.04	-	
+CMS_scale_e	lnN	1.005	1.005	-	
+CMS_res_e	lnN	1.02	1.02	-	
+

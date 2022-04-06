@@ -1,0 +1,16 @@
+Combination of ZpToMuMu_M53.7_2016=/home/kshi/SUSY/CMSSW_8_0_25/src/Zprime-StatFW/DataCard_Zto4l/EXO/2021-11-09_newstat/Zprime/ZpToMuMu_M53.7/ZpToMuMu_M53.7_2016.txt  ZpToMuMu_M53.7_2017=/home/kshi/SUSY/CMSSW_8_0_25/src/Zprime-StatFW/DataCard_Zto4l/EXO/2021-11-09_newstat/Zprime/ZpToMuMu_M53.7/ZpToMuMu_M53.7_2017.txt
+imax 2 number of bins
+jmax 2 number of processes minus 1
+kmax 0 number of nuisance parameters
+----------------------------------------------------------------------------------------------------------------------------------
+shapes *                    ZpToMuMu_M53.7_2016  FAKE
+shapes *                    ZpToMuMu_M53.7_2017  FAKE
+----------------------------------------------------------------------------------------------------------------------------------
+bin          ZpToMuMu_M53.7_2016  ZpToMuMu_M53.7_2017
+observation  0                    0                  
+----------------------------------------------------------------------------------------------------------------------------------
+bin          ZpToMuMu_M53.7_2016  ZpToMuMu_M53.7_2016  ZpToMuMu_M53.7_2016  ZpToMuMu_M53.7_2017  ZpToMuMu_M53.7_2017  ZpToMuMu_M53.7_2017
+process      zpToMuMu_M53.7       ggZZ                 qqZZ                 zpToMuMu_M53.7       ggZZ                 qqZZ               
+process      0                    1                    2                    0                    1                    2                  
+rate         23.3872062844        0                    0                    26.9702044616        0                    0                  
+----------------------------------------------------------------------------------------------------------------------------------
